@@ -1,42 +1,49 @@
-def err = null
-try {
+// def err = null
+// try {
   
-    node {
+//     node {
       
-        stage('Preparation') { 
-            url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git'
-        }
+//         stage('Preparation') { 
+//             url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git'
+//         }
         
-        stage('Clean Build') {
-                dir("android") {
-                    sh "pwd"
-                    sh 'ls -al'
-                    sh './gradlew clean'
-                }   
-        }
+//         stage('Clean Build') {
+//                 dir("android") {
+//                     sh "pwd"
+//                     sh 'ls -al'
+//                     sh './gradlew clean'
+//                 }   
+//         }
         
-        stage('Build release ') {
-            dir("android") {
-                sh './gradlew assembleRelease'
-            }
-        }
+//         stage('Build release ') {
+//             dir("android") {
+//                 sh './gradlew assembleRelease'
+//             }
+//         }
       
-        stage('Compile') {
-            archiveArtifacts artifacts: '**/*.apk', fingerprint: true, onlyIfSuccessful: true            
-        }
-    }
+//         stage('Compile') {
+//             archiveArtifacts artifacts: '**/*.apk', fingerprint: true, onlyIfSuccessful: true            
+//         }
+//     }
   
-} catch (caughtError) { 
+// } catch (caughtError) { 
     
-    err = caughtError
-    currentBuild.result = "FAILURE"
+//     err = caughtError
+//     currentBuild.result = "FAILURE"
 
-} finally {
+// } finally {
     
-    if(currentBuild.result == "FAILURE"){
-              sh "echo 'Build FAILURE'"
-    }else{
-         sh "echo 'Build SUCCESSFUL'"
-    }
+//     if(currentBuild.result == "FAILURE"){
+//               sh "echo 'Build FAILURE'"
+//     }else{
+//          sh "echo 'Build SUCCESSFUL'"
+//     }
    
+// }
+
+
+node {
+  stage('Hello') {
+    echo 'Hello World'
+  }
 }
