@@ -37,26 +37,33 @@
 // }
 
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing....'
-            }
-        }
-        stage('Deploy') {
-            when {
-                expression { currentBuild.result == 'SUCCESS' }
-            }
-            steps {
-                echo 'Deploying... ${currentBuild.result}'
-            }
-        }
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Building...'
+        sh 'sleep 20'
+      }
     }
+
+    stage('Test') {
+      steps {
+        echo 'Building...'
+        sh 'sleep 10'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        if (currentBuild.previousBuild.result == 'SUCCESS') {
+          echo 'Deploying...'
+        } else {
+          error('Previous stage failed. Aborting deployment.')
+        }
+      }
+    }
+  }
 }
+
 
