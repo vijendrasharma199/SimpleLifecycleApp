@@ -11,6 +11,8 @@ pipeline {
 //                 url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git']]])
                 
                 git branch: 'main', credentialsId: '584f87c5-8264-40ce-93dc-6551b1a7fc8b', url: 'git@github.com:vijendrasharma199/SimpleLifecycleApp.git'
+                currentBuild.result = 'ABORTED'
+                error('Stopping early…')
             }
         }
         stage('Build APK') {
