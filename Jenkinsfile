@@ -10,6 +10,7 @@ pipeline {
                 userRemoteConfigs: [[credentialsId: 'git-creds', 
                 url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git']]])
             }
+            currentBuild.result = 'FAILURE'
         }
         stage('Build APK') {
             steps {
