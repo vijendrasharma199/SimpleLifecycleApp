@@ -56,10 +56,12 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        if (currentBuild.previousBuild.result == 'SUCCESS') {
-          echo 'Deploying...'
-        } else {
-          error('Previous stage failed. Aborting deployment.')
+        script {
+          if (currentBuild.previousBuild.result == 'SUCCESS') {
+            echo 'Deploying...'
+          } else {
+            error('Previous stage failed. Aborting deployment.')
+          }
         }
       }
     }
