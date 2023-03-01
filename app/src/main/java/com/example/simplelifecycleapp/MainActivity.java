@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d(TAG, "onCreate:");
-        Utility.showToast(this, "onCreate");
+        Utility.showToast(this, "onCreate from Main activity");
     }
 
     @Override
