@@ -8,7 +8,7 @@ pipeline {
                 extensions: [[$class: 'RelativeTargetDirectory', 
                 relativeTargetDir: 'project']], submoduleCfg: [], 
                 userRemoteConfigs: [[credentialsId: 'git-creds', 
-                url: 'git@github.com:vijendrasharma199/SimpleLifecycleApp.git']]])
+                url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git']]])
             }
         }
         stage('Build APK') {
