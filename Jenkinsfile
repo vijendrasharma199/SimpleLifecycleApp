@@ -37,22 +37,28 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            echo 'Building...'
+            steps{
+                echo 'Building...'
+            }
         }
 
         boolean testPassed = true
         stage('Test') {
-            try{
-                sh 'mvn test'
-            }catch (Exception e){
-                testPassed = false
+            steps{
+                try{
+                    sh 'mvn test'
+                }catch (Exception e){
+                    testPassed = false
+                }   
             }
         }
 
         stage('Push Artifacts') {
-            if(testPassed){
-                //push to artifactory
-                echo 'Test Passwed and pushed to artifactory'
+            steps{
+                if(testPassed){
+                    //push to artifactory
+                    echo 'Test Passwed and pushed to artifactory'
+                }
             }
         }
     }
