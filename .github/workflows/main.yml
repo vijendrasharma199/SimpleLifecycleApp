@@ -18,3 +18,9 @@ jobs:
       
       - name: Run a one-line script
         run: echo Hello, World!
+        
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test and deploye your project.
+        
