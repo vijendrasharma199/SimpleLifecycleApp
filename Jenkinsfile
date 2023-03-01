@@ -36,36 +36,59 @@
 // //     }
 // }
 
+// pipeline {
+//   agent any
+
+//   stages {
+//     stage('Build') {
+//       steps {
+//         echo 'Building...'
+//         sh 'sleep 20'
+//       }
+//     }
+
+//     stage('Test') {
+//       steps {
+//         echo 'Building...'
+//         sh 'sleep 10'
+//       }
+//     }
+
+//     stage('Deploy') {
+//       steps {
+//         script {
+//           if (currentBuild.previousBuild.result == 'SUCCESS') {
+//             echo 'Deploying...'
+//           } else {
+//             error('Previous stage failed. Aborting deployment.')
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
 pipeline {
-  agent any
-
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Building...'
-        sh 'sleep 20'
-      }
-    }
-
-    stage('Test') {
-      steps {
-        echo 'Building...'
-        sh 'sleep 10'
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        script {
-          if (currentBuild.previousBuild.result == 'SUCCESS') {
-            echo 'Deploying...'
-          } else {
-            error('Previous stage failed. Aborting deployment.')
-          }
+    agent any
+    stages {
+        stage('1') {
+            steps {
+                sh 'exit 0'
+            }
         }
-      }
+        stage('2') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    sh "exit 1"
+                }
+            }
+        }
+        stage('3') {
+            steps {
+                sh 'exit 0'
+            }
+        }
     }
-  }
 }
-
-
