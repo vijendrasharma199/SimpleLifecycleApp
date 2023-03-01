@@ -4,7 +4,7 @@ try {
     node {
       
         stage('Preparation') { 
-            url: 'https://github.com/prashant-bhatasana/demoApp/'
+            url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git'
         }
         
         stage('Clean Build') {
@@ -16,9 +16,6 @@ try {
         }
         
         stage('Build release ') {
-            parameters {
-                credentials credentialType: 'org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl', defaultValue: '5d34f6f7-b641-4785-frd5-c93b67e71b6b', description: '', name: 'keystore', required: true
-            }
             dir("android") {
                 sh './gradlew assembleRelease'
             }
