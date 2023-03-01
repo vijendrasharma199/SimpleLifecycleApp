@@ -17,7 +17,8 @@ try {
         
         stage('Build') {
             dir("android") {
-                sh './gradlew assembleRelease'
+                //sh './gradlew assembleRelease'
+              sh 'assembleDebug'
             }
         }
       
