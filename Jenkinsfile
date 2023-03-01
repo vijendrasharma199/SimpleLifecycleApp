@@ -27,7 +27,7 @@ pipeline {
         }
         failure {
             emailext body: "The Android app build has failed.", 
-            subject: "Android app build failed", to: "your-email@example.com"
+            subject: "Android app build failed", to: "vijendra.sharma@sunfox.in"
         }
     }
 }
