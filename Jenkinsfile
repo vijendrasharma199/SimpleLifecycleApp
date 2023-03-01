@@ -19,15 +19,15 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            emailext body: "The Android app build is successful. The APK is attached.", 
-            subject: "Android app build successful", attachmentsPattern: 'project/app/build/outputs/apk/debug/app-debug.apk', 
-            to: "vijendra.sharma@sunfox.in"
-        }
-        failure {
-            emailext body: "The Android app build has failed.", 
-            subject: "Android app build failed", to: "vijendra.sharma@sunfox.in"
-        }
-    }
+//     post {
+//         success {
+//             emailext body: "The Android app build is successful. The APK is attached.", 
+//             subject: "Android app build successful", attachmentsPattern: 'project/app/build/outputs/apk/debug/app-debug.apk', 
+//             to: "vijendra.sharma@sunfox.in"
+//         }
+//         failure {
+//             emailext body: "The Android app build has failed.", 
+//             subject: "Android app build failed", to: "vijendra.sharma@sunfox.in"
+//         }
+//     }
 }
