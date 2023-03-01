@@ -80,9 +80,10 @@ pipeline {
         }
         stage('2') {
             steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    sh "exit 1"
-                }
+//                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+//                     sh "exit 1"
+//                 }
+              error("Error Generated...")
             }
         }
         stage('3') {
