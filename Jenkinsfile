@@ -1,50 +1,33 @@
-def err = null
-try {
-  
-    node {
-      
-//         stage('Preparation') { 
-//             url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git'
-//         }
-        
-//         stage('Clean Build') {
-//                 dir("android") {
-//                     sh "pwd"
-//                     sh 'ls -al'
-//                     sh './gradlew clean'
-//                 }   
-//         }
-        
-        stage('Build') {
-            dir("android") {
-                //sh './gradlew assembleRelease'
-              sh 'assembleDebug'
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from Git repository
+                git 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git'
             }
         }
-      
-        stage('Compile') {
-            archiveArtifacts artifacts: '**/*.apk', fingerprint: true, onlyIfSuccessful: true            
+        
+        stage('Clean') {
+            steps {
+                // Clean the project
+                sh './gradlew clean'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build the project
+                sh './gradlew assembleDebug'
+            }
+        }
+        
+        stage('Save Artifacts') {
+            steps {
+                // Archive the APK files
+                archiveArtifacts artifacts: 'app/build/outputs/**/*.apk', fingerprint: true
+            }
         }
     }
-  
-} catch (caughtError) { 
-    
-    err = caughtError
-    currentBuild.result = "FAILURE"
-
-} finally {
-    
-    if(currentBuild.result == "FAILURE"){
-              sh "echo 'Build FAILURE'"
-    }else{
-         sh "echo 'Build SUCCESSFUL'"
-    }
-   
 }
-
-
-// node {
-//   stage('Hello') {
-//     echo 'Hello World'
-//   }
-// }
