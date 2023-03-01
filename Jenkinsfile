@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                currentBuild.result = 'FAILURE'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [[$class: 'RelativeTargetDirectory', 
@@ -10,7 +11,6 @@ pipeline {
                 userRemoteConfigs: [[credentialsId: 'git-creds', 
                 url: 'https://github.com/vijendrasharma199/SimpleLifecycleApp.git']]])
             }
-            currentBuild.result = 'FAILURE'
         }
         stage('Build APK') {
             steps {
