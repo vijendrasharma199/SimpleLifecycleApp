@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the Lint
-        uses: echo Lint
+        run: echo Lint
 
   #      - name: Checkout the code
   #        uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the Unit Test case
-        uses: echo Unit Test Case
+        run: echo Unit Test Case
 
   #      - name: Checkout the code
   #        uses: actions/checkout@v2
@@ -67,7 +67,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Print the Instrumentation Test case
-        uses: echo Instrumentation Test Case
+        run: echo Instrumentation Test Case
 #      - name: Checkout the code
 #        uses: actions/checkout@v2
 
