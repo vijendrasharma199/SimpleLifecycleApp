@@ -62,11 +62,11 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      #      - name: Android Emulator Runner
-      #        uses: ReactiveCircus/android-emulator-runner@v2.27.0
-      #        with:
-      #          api-level: 29
-      #          script: ./gradlew connectedCheck
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8
+
       - name: Android Emulator Runner
         uses: reactivecircus/android-emulator-runner@v2
         with:
