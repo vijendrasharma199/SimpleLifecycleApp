@@ -39,18 +39,18 @@ jobs:
           name: index.html
           path: app/build/reports/lint-results-debug.html
 
+  unit-test:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
+      - name: Run tests
+        run: ./gradlew test
 
-  #  jobs:
-  #    build:
-  #      runs-on: ubuntu-latest
-  #      steps:
-  #        - uses: actions/checkout@v2
-  #
-  #        - name: Run a one-line script
-  #          run: echo Hello, World! from activity
-  #
-  #        - name: Run a multi-line script
-  #          run: |
-  #            echo Add other actions to build,
-  #            echo test and deploy your project.
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
