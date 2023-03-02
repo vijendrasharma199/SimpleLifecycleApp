@@ -10,6 +10,24 @@ on:
   
   workflow_dispatch:
 
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run Lint
+        run: ./gradlew lintDebug
+
+      - name: Upload html test report
+        uses: actions/upload-artifcat@v2
+        with:
+          name: index.html
+          path: app/build/reports/int-results-debug.html
+
+
+
   #  jobs:
   #    build:
   #      runs-on: ubuntu-latest
@@ -23,22 +41,3 @@ on:
   #          run: |
   #            echo Add other actions to build,
   #            echo test and deploy your project.
-
-  jobs:
-    lint:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout the code
-          uses: actions/checkout@v2
-
-        - name: Run Lint
-          run: ./gradlew lintDebug
-
-        - name: Upload html test report
-          uses: actions/upload-artifcat@v2
-          with:
-            name: index.html
-            path: app/build/reports/int-results-debug.html
-
-
-
