@@ -62,10 +62,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: Run espresso tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Android Emulator Runner
+        uses: ReactiveCircus/android-emulator-runner@v2.27.0
         with:
-          api-level: 33
           script: ./gradlew connectedCheck
 
       - name: Upload test-report
