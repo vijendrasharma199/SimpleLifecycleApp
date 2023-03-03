@@ -124,7 +124,7 @@ jobs:
         with:
           api-level: 30
 #          target: default
-#          arch: x86_64
+          arch: x86_64
           script: ./gradlew connectedCheck --stacktrace
 
 #      - name: Android Emulator Runner
