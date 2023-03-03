@@ -66,17 +66,17 @@ jobs:
       - name: Print the Lint
         run: echo Lint
 
-#      - name: Checkout the code
-#        uses: actions/checkout@v2
-#
-#      - name: Run Lint
-#        run: ./gradlew lintDebug
-#
-#      - name: Upload html test report
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: index.html
-#          path: app/build/reports/lint-results-debug.html
+  #      - name: Checkout the code
+  #        uses: actions/checkout@v2
+  #
+  #      - name: Run Lint
+  #        run: ./gradlew lintDebug
+  #
+  #      - name: Upload html test report
+  #        uses: actions/upload-artifact@v2
+  #        with:
+  #          name: index.html
+  #          path: app/build/reports/lint-results-debug.html
 
   unit-test:
     needs: [ lint ]
@@ -85,17 +85,17 @@ jobs:
       - name: Print the Unit Test case
         run: echo Unit Test Case
 
-#      - name: Checkout the code
-#        uses: actions/checkout@v2
-#
-#      - name: Run tests
-#        run: ./gradlew test
-#
-#      - name: Upload test report
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: unit_test_report
-#          path: app/build/reports/tests/testDebugUnitTest/
+  #      - name: Checkout the code
+  #        uses: actions/checkout@v2
+  #
+  #      - name: Run tests
+  #        run: ./gradlew test
+  #
+  #      - name: Upload test report
+  #        uses: actions/upload-artifact@v2
+  #        with:
+  #          name: unit_test_report
+  #          path: app/build/reports/tests/testDebugUnitTest/
 
   instrumentation-test:
     needs: [ unit-test ]
@@ -113,13 +113,19 @@ jobs:
           distribution: temurin
           java-version: 11
 
-#      - name: Run connected tests
-#        uses: ReactiveCircus/android-emulator-runner@v2
-#        with:
-#          api-level: 30
-#          target: google_apis
-#          arch: x86_64
-#          script: ./gradlew connectedCheck
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      #      - name: Run connected tests
+      #        uses: ReactiveCircus/android-emulator-runner@v2
+      #        with:
+      #          api-level: 30
+      #          target: google_apis
+      #          arch: x86_64
+      #          script: ./gradlew connectedCheck
 
       - name: Android Emulator Runner
         uses: ReactiveCircus/android-emulator-runner@v2.27.0
