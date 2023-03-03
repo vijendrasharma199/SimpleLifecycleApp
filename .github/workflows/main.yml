@@ -78,24 +78,24 @@ jobs:
             name: index.html
             path: app/build/reports/lint-results-debug.html
 
-  #  unit-test:
-  #    needs: [ lint ]
-  #    runs-on: ubuntu-latest
-  #    steps:
-  #      - name: Print the Unit Test case
-  #        run: echo Unit Test Case
+    unit-test:
+      needs: [ lint ]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print the Unit Test case
+          run: echo Unit Test Case
 
-  #      - name: Checkout the code
-  #        uses: actions/checkout@v2
-  #
-  #      - name: Run tests
-  #        run: ./gradlew test
-  #
-  #      - name: Upload test report
-  #        uses: actions/upload-artifact@v2
-  #        with:
-  #          name: unit_test_report
-  #          path: app/build/reports/tests/testDebugUnitTest/
+        - name: Checkout the code
+          uses: actions/checkout@v2
+
+        - name: Run tests
+          run: ./gradlew test
+
+        - name: Upload test report
+          uses: actions/upload-artifact@v2
+          with:
+            name: unit_test_report
+            path: app/build/reports/tests/testDebugUnitTest/
 
 #  instrumentation-test:
 #    needs: [ unit-test ]
