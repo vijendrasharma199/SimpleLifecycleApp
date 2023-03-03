@@ -11,25 +11,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    name: Analyze Android
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Run a one-line script
-        run: echo Hello, World! from activity
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
 
-      - name: Run a multi-line script
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Assemble
+#        env:
+#          GITHUB_USERNAME: ${{ secrets.USERNAME_GITHUB }}
+#          GITHUB_PACKAGE_ACCESS_TOKEN: ${{ secrets.PACKAGE_ACCESS_TOKEN_GITHUB }}
         run: |
-          echo Add other actions to build,
-          echo test and deploy your project.
+          ./gradlew clean assembleRelease
+#      - name: Publish
+#        run: ./gradlew publish
+#        env:
+#          PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+#          PUBLISHER_USERNAME: ${{ secrets.PUBLISHER_USERNAME }}
+#          OWNER: ${{ secrets.OWNER }}
 
-  lint:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the Lint
-        run: echo Lint
+
+
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Run a one-line script
+#        run: echo Hello, World! from activity
+#
+#      - name: Run a multi-line script
+#        run: |
+#          echo Add other actions to build,
+#          echo test and deploy your project.
+#
+#  lint:
+#    needs: [ build ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Print the Lint
+#        run: echo Lint
 
   #      - name: Checkout the code
   #        uses: actions/checkout@v2
@@ -43,12 +76,12 @@ jobs:
   #          name: index.html
   #          path: app/build/reports/lint-results-debug.html
 
-  unit-test:
-    needs: [ lint ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the Unit Test case
-        run: echo Unit Test Case
+#  unit-test:
+#    needs: [ lint ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Print the Unit Test case
+#        run: echo Unit Test Case
 
   #      - name: Checkout the code
   #        uses: actions/checkout@v2
@@ -62,12 +95,12 @@ jobs:
   #          name: unit_test_report
   #          path: app/build/reports/tests/testDebugUnitTest/
 
-  instrumentation-test:
-    needs: [ unit-test ]
-    runs-on: macos-latest
-    steps:
-      - name: Print the Instrumentation Test case
-        run: echo Instrumentation Test Case
+#  instrumentation-test:
+#    needs: [ unit-test ]
+#    runs-on: macos-latest
+#    steps:
+#      - name: Print the Instrumentation Test case
+#        run: echo Instrumentation Test Case
 #      - name: Checkout the code
 #        uses: actions/checkout@v2
 
