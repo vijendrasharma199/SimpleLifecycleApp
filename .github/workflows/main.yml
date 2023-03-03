@@ -51,20 +51,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run a one-line script
-        run: echo Hello, World! from activity
+#      - name: Run a one-line script
+#        run: echo Hello, World! from activity
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test and deploy your project.
+      - name: Build Step
+        run: ./gradlew build
+#      - name: Run a multi-line script
+#        run: |
+#          echo Add other actions to build,
+#          echo test and deploy your project.
 
   lint:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
-      - name: Print the Lint
-        run: echo Lint
+#      - name: Print the Lint
+#        run: echo Lint
 
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -82,8 +84,8 @@ jobs:
     needs: [ lint ]
     runs-on: ubuntu-latest
     steps:
-      - name: Print the Unit Test case
-        run: echo Unit Test Case
+#      - name: Print the Unit Test case
+#        run: echo Unit Test Case
 
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -101,8 +103,8 @@ jobs:
     needs: [ unit-test ]
     runs-on: macos-latest
     steps:
-      - name: Print the Instrumentation Test case
-        run: echo Instrumentation Test Case
+#      - name: Print the Instrumentation Test case
+#        run: echo Instrumentation Test Case
 
       - name: Checkout the code
         uses: actions/checkout@v2
