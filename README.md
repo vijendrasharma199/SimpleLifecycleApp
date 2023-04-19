@@ -1,29 +1,29 @@
-# Documentation for Sericom Module | v1.0.5
+# Simple Lifecycle App | v1.0.0
 
-##### A guidance document for understanding the ```Sericom``` module which helps to communicate with hardware devices to any android application.
+##### A guidance document for understanding the ```Lifecycle``` application of android application.
 
 ## Purpose:
-The aim of this module is to establish a communication setup between the hardware and software, so that it can work smoothly as per the required inputs by integrating in any android application.
+The aim of this module is to understand the role of lifecycle in any android application.
 
 ## Introduction:
-Current version of _**Sericom**_  = 1.0.5
+Current version of _**SimpleLifecycleApp**_  = 1.0.0
 
-_**Sericom**_ refers to a medium to connect hardware devices to an android app by checking the required permission(to notify the user either for acceptance or decline) by showing the pop up for permission whenever a device connects to an android application through the cable, so that it takes care of user privacy.
-If the user allows it, then the device is ready for communication and can start communication according to their need by sending the command.
+_**SimpleLifecycleApp**_ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.
 
 ## Features included:
-* UsbDevice connection detection and its permission handling.
-* Can provide custom filter option in response to commands.
-* Explicitly provide custom device configuration like baud rate, start bit, stop bit, parity bit, etc.
-* **Error handling** with their own status code.
+* It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+* It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+* It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+* **Error handling** It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
 
 
 ## Functionalities included & its usage:
 
-* **Installation** : For installing the sericom module, add the following line to build.gradle file of app level.
-```implementation ("in.sunfox.healthcare.commons.android.sericom:sericom:1.0.5")```
+* **Installation** : For installing the lifecycle application module, add the following line to build.gradle file of app level.
+```implementation ("lifecycle application <latest_version>")```
 
-* **Initialization** : For initialization of device, a method is provided named _**Sericom.initialize(applicationContext)**_, which takes application context reference as a parameter and is used at the root level of application.
+* **Initialization** : For initialization of device, a method is provided named _**Lifecycle.initialize(applicationContext)**_, which takes application context reference as a parameter and is used at the root level of application.
 
 * **Setup device configuration(Optional)** : This process includes multiple function like :
   - **Baud rate**: Rate at which information is transferred in a communication channel. By default it is 115200.
